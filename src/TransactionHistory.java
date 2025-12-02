@@ -38,4 +38,17 @@ public class TransactionHistory {
     public String getTransType() {return transType;}
     public void setTransType(String transType) {this.transType = TransType;}
 
+    public double getQty() {return qty;}
+    public void setQty(double qty) {this.qty = qty; }
+
+    public double getCostBasis( ) {return costBasis;}
+    public void setCostBasis(double costBasis) {this.costBasis = costBasis;}
+
+    @Override
+    public String toString( ) {
+
+        return String.format("%-6s | %-10s| %-8s | Qty: %-8.2f | Cost Basis: $%-8.2f",
+                ticker, transDate, transType, qty, costBasis);
+
+    }
 }
