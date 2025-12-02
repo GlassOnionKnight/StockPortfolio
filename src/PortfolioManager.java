@@ -20,9 +20,23 @@ public class PortfolioManager {
         int choice;
         do {
             printMenu();
+            choice = getInput(sc, "Select menu (0 to 6): ");
+            switch (choice) {
+                case 0 -> System.out.println("Exit");
+                case 1 -> depositCash(sc);
+                case 2 -> withdrawCash(sc);
+                case 3 -> buyStock(sc);
+                case 4 -> sellStock(sc);
+                case 5 -> displayTransactionHistory();
+                case 6 -> displayPortfolio();
+                default -> System.out.println("invalid, select again");
 
+            }
 
-        }
+        } while (choice !=0);
+        sc.close();
 
     }
+
+
 }
