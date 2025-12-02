@@ -35,4 +35,7 @@ public class TransactionHistory {
     public String getTransDate() { return transDate; }
     public void setTransDate( String transDate ) {this.transDate = transDate; }
 
+    public String getTransType() {return transType;}
+    public void setTransType(String transType) {this.transType = TransType;}
+
 }
