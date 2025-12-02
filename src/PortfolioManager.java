@@ -14,4 +14,15 @@ public class PortfolioManager {
         manager.run();
 
     }
+
+    private void run() {
+        Scanner sc = new Scanner(System.in);
+        int choice;
+        do {
+            printMenu();
+
+
+        }
+
+    }
 }
