@@ -37,6 +37,14 @@ public class PortfolioManager {
         sc.close();
 
     }
+    private void printMenu() {
+        System.out.println(" Brokerage Acount ");
+        System.out.println("0 - Exit");
+        System.out.println("1 - Deposit");
+        System.out.println("2 - Withdraw");
 
+
+
+    }
 
 }
