@@ -107,9 +107,32 @@ public class PortfolioManager {
             System.out.println("Not enough shares");
             return;
         }
+        double totalProceeds = shares * price;
+        cashBalance += totalProceeds;
+        portfolioList.add(new TransactionHistory("CASH", today(), "DEPOSIT", totalProceeds, 1.00));
+
+        System.out.println("Success stock sold.");
+    }
+        private void displayTransactionHistory() {
+        if (portfolioList.isEmpty()) {
+            System.out.println("Empty transaction list");
+            return;
+        }
+        System.out.println("Past Transactions");
+        for (TransactionHistory th : portfolioList){
+            System.out.println(th);
+        }
 
     }
 
-    }
+    private void displayPortfolio() {
+        System.out.println("Summary of portfolio.");
+        System.out.printf("Balance: $%.2f/n", cashBalance);
 
+        if(stockHoldings.isEmpty()) {
+            System.out.println("No holdings");
+
+        }
+
+    }
 }
