@@ -158,6 +158,16 @@ public class PortfolioManager {
         }
 
     }
-    Private double getDoubleInput(){}
+    Private double getDoubleInput(Scanner sc, String prompt){
+        while (true) {
+            try {
+                System.out.print(prompt);
+                return sc.nextDouble();
+            } catch (InputMismatchException e) {
+                System.out.println("Input invalid enter a number");
+                sc.nextLine();
+            }
+        }
+    }
 
 }
