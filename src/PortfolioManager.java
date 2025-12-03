@@ -142,4 +142,22 @@ public class PortfolioManager {
         }
 
     }
+    private String today() {
+        return localDate.now().toString();
+    }
+
+    private int getIntInput(Scanner sc, Sring prompt) {
+        while (true) {
+            try {
+                System.out.print(prompt);
+                return sc.nextInt();
+            } catch (InputMismatchException e) {
+                System.out.println("Invalid enter int.");
+                sc.nextLine();
+            }
+        }
+
+    }
+    Private double getDoubleInput(){}
+
 }
