@@ -42,6 +42,19 @@ public class PortfolioManager {
         System.out.println("0 - Exit");
         System.out.println("1 - Deposit");
         System.out.println("2 - Withdraw");
+        System.out.println("3 - Purchase Stock");
+        System.out.println("4 - Sell Stock");
+        System.out.println("5 - Display Transaction History");
+        System.out.println("6 - Display Portfolio");
+    }
+    private void depositCash(Scanner sc) {
+        double amount = getDoubleInput(sc, "Deposit amount");
+        if (amount <= 0) {
+            System.out.println("Needs to be positive");
+            return;
+        }
+
+    }
 
 
 
