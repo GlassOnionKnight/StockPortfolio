@@ -3,6 +3,8 @@ import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 
 public class PortfolioManager {
