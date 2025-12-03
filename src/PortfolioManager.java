@@ -10,6 +10,7 @@ import java.util.Map;
 public class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();
     private double cashBalance = 0.0;
+    private Map<String, Double> stockHoldings = new Hashmap<>();
 
     public static void main (String[] args) {
         PortfolioManager manager = new PortfolioManager();
@@ -55,10 +56,16 @@ public class PortfolioManager {
             System.out.println("Needs to be positive");
             return;
         }
+        cashBalance += amount;
+        portfolioList.add(new TransactionHistory("CASH", today(),"DEPOSIT", amount, 1.00));
+        System.out.println("Cash deposited successfully.");
 
     }
 
+    private void withdrawCash(Scanner sc){
+        double amount =
 
+    }
 
     }
 
