@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.util.LocalDate;
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 import java.text.SimpleDateFormat;
@@ -11,7 +11,7 @@ import java.util.*;
 public class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();
     private double cashBalance = 0.0;
-    private Map<String, Double> stockHoldings = new Hashmap<>();
+    private Map<String, Double> stockHoldings = new HashMap<>();
 
     public static void main (String[] args) {
         PortfolioManager manager = new PortfolioManager();
