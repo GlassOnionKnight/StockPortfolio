@@ -63,8 +63,15 @@ public class PortfolioManager {
     }
 
     private void withdrawCash(Scanner sc){
-        double amount =
-
+        double amount = getDoubleInput(sc, "Amount to withdraw: ");
+        if (amount <= 0) {
+            System.out.println("Needs positive input.");
+            return;
+        }
+    if (amount > 0) {
+        System.out.println("Insufficient Funds");
+        return;
+    }
     }
 
     }
