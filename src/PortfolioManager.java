@@ -72,6 +72,23 @@ public class PortfolioManager {
         System.out.println("Insufficient Funds");
         return;
     }
+    cashBalance -= amount;
+    portfolioList.add(new TransactionHistory ("CASH", today(),"WITHDRAW", -amount, 1.00));
+    System.out.println("Successful withdrawal");
+
+    }
+    private void buyStock(Scanner sc) {
+        System.out.print("Input Stock Ticker");
+        String ticker = sc.next().toUpperCase();
+        double shares = getDoubleInput(sc, "Input amount of shares");
+        double price = getDoubleInput(sc, "Share Price");
+        double totalCost = shares * price;
+
+        if (totalCost > cashBalance) {
+            System.out.println("Not enough funds for stock purchase");
+            return;
+        }
+
     }
 
     }
