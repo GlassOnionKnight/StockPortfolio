@@ -47,6 +47,8 @@ public class TransactionHistory {
 
     @Override
     public String toString( ) {
+        DecimalFormat df = new DecimalFormat("#,##0.0");
+        DecimalFormat money = new DecimalFormat("$#,##0.0");
 
         return String.format("%-6s | %-10s| %-8s | Qty: %-8.2f | Cost Basis: $%-8.2f",
                 ticker, transDate, transType, qty, costBasis);
