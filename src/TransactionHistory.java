@@ -3,7 +3,7 @@
  * Date: 12/01/2025
  */
 
-
+import java.text.DecimalFormat;
 
 public class TransactionHistory {
     private String ticker;
@@ -12,7 +12,8 @@ public class TransactionHistory {
     private double qty;
     private double costBasis;
 
-    public TransactionHistory() {
+
+    public TransactionHistory() {}
 
         this.ticker = "";
         this.transDate = "";
@@ -20,7 +21,7 @@ public class TransactionHistory {
         this.qty = 0.0;
         this.costBasis;
 
-    }
+
     public TransactionHistory(String ticker, transDate, String transType, double qty, double costBasis){
         this.ticker = ticker;
         this.transDate = transDate;
