@@ -96,6 +96,19 @@ public class PortfolioManager {
 
         System.out.println("Success stock purchased.");
     }
+    private void sellStock(Scanner sc) {
+        System.out.println("Input ticker");
+        String ticker = sc.next().toUpperCase();
+        double shares = getDoubleinput(sc, "Amount to sell: ");
+        double price = getDoubleInput(sc, "Share Price");
+
+        double ownedShares = stockHoldings.getOrDefault(ticker, 0.0);
+        if (shares > ownedShares) {
+            System.out.println("Not enough shares");
+            return;
+        }
+
+    }
 
     }
 
