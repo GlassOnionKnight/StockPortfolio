@@ -90,6 +90,11 @@ public class PortfolioManager {
         }
         cashBalance -= totalCost;
         portfolioList.add(mew TransactionHistory("CASH", today(), "WITHDRAW", -totalCost, 1.00));
+
+        stockHoldings.put(ticker, stockHoldings.getOrDefault(ticker, 0.0) + shares);
+        portfolioList.add(new TransactionHistory(ticker, today(), "BUY", shares, price));
+
+        System.out.println("Success stock purchased.");
     }
 
     }
