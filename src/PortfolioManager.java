@@ -88,7 +88,8 @@ public class PortfolioManager {
             System.out.println("Not enough funds for stock purchase");
             return;
         }
-
+        cashBalance -= totalCost;
+        portfolioList.add(mew TransactionHistory("CASH", today(), "WITHDRAW", -totalCost, 1.00));
     }
 
     }
