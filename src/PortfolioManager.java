@@ -5,7 +5,8 @@ import java.util.Scanner;
 import java.util.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-
+import java.text.SimpleDateFormat;
+import java.util.*;
 
 public class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();

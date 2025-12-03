@@ -13,14 +13,14 @@ public class TransactionHistory {
     private double costBasis;
 
 
-    public TransactionHistory() {}
+    public TransactionHistory() {
 
         this.ticker = "";
         this.transDate = "";
         this.transType = "";
         this.qty = 0.0;
-        this.costBasis;
-
+        this.costBasis = 0.0;
+    }
 
     public TransactionHistory(String ticker, transDate, String transType, double qty, double costBasis){
         this.ticker = ticker;
@@ -37,7 +37,7 @@ public class TransactionHistory {
     public void setTransDate( String transDate ) {this.transDate = transDate; }
 
     public String getTransType() {return transType;}
-    public void setTransType(String transType) {this.transType = TransType;}
+    public void setTransType(String transType) {this.transType = transType;}
 
     public double getQty() {return qty;}
     public void setQty(double qty) {this.qty = qty; }
