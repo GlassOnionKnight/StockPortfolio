@@ -131,6 +131,13 @@ public class PortfolioManager {
 
         if(stockHoldings.isEmpty()) {
             System.out.println("No holdings");
+        } else {
+            System.out.println("Current holdings:");
+            for (Map.Entry<String, Double> entry : stockHoldings.entrySet()) {
+                if (entry.getValue() > 0) {
+                    System.out.printf("%-8s Shares: %.2f\n", entry.getKey(), entry.getValue());
+                }
+            }
 
         }
 
