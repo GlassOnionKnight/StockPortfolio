@@ -2,11 +2,8 @@
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
-import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
-import java.text.SimpleDateFormat;
-import java.util.*;
 
 public class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();
@@ -24,7 +21,7 @@ public class PortfolioManager {
         int choice;
         do {
             printMenu();
-            choice = getInput(sc, "Select menu (0 to 6): ");
+            choice = getIntInput(sc, "Select menu (0 to 6): ");
             switch (choice) {
                 case 0 -> System.out.println("Exit");
                 case 1 -> depositCash(sc);
@@ -69,7 +66,7 @@ public class PortfolioManager {
             System.out.println("Needs positive input.");
             return;
         }
-    if (amount > 0) {
+    if (amount > cashBalance) {
         System.out.println("Insufficient Funds");
         return;
     }
@@ -147,7 +144,7 @@ public class PortfolioManager {
         return localDate.now().toString();
     }
 
-    private int getIntInput(Scanner sc, Sring prompt) {
+    private int getIntInput(Scanner sc, String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
