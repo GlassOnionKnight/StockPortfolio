@@ -22,9 +22,9 @@ public class TransactionHistory {
         this.costBasis = 0.0;
     }
 
-    public <transDate> TransactionHistory(String ticker, transDate, String transType, double qty, double costBasis){
+    public <transDate> TransactionHistory(String ticker,String transDate, String transType, double qty, double costBasis){
         this.ticker = ticker;
-        this.transDate = transDate;
+        this.transDate =  transDate;
         this.transType = transType;
         this.qty = qty;
         this.costBasis = costBasis;
