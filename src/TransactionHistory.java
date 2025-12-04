@@ -50,7 +50,7 @@ public class TransactionHistory {
         DecimalFormat df = new DecimalFormat("#,##0.0");
         DecimalFormat money = new DecimalFormat("$#,##0.0");
 
-        return String.format("%-6s | %-10s| %-8s | Qty: %-8.2f | Cost Basis: $%-8.2f",
+        return String.format("%-6s | %-10s | %-8s | Qty: %-8.2f | Cost Basis: $%-8.2f",
                 ticker, transDate, transType, df.format(qty), money.format(costBasis));
 
     }
