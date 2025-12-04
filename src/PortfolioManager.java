@@ -157,7 +157,7 @@ public class PortfolioManager {
         }
 
     }
-    Private double getDoubleInput(Scanner sc, String prompt){
+    private double getDoubleInput(Scanner sc, String prompt){
         while (true) {
             try {
                 System.out.print(prompt);
