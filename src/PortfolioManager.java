@@ -40,7 +40,7 @@ public class PortfolioManager {
 
     }
     private void printMenu() {
-        System.out.println(" Brokerage Acount ");
+        System.out.println(" Brokerage Account ");
         System.out.println("0 - Exit");
         System.out.println("1 - Deposit");
         System.out.println("2 - Withdraw");
@@ -72,7 +72,7 @@ public class PortfolioManager {
         return;
     }
     cashBalance -= amount;
-    portfolioList.add(new TransactionHistory ("CASH", today(),"WITHDRAW", -amount, 1.00));
+    portfolioList.add(new TransactionHistory ("CASH", today(),"WITHDRAW", amount, 1.00));
     System.out.println("Successful withdrawal");
 
     }
@@ -109,6 +109,7 @@ public class PortfolioManager {
         double totalProceeds = shares * price;
         cashBalance += totalProceeds;
         portfolioList.add(new TransactionHistory("CASH", today(), "DEPOSIT", totalProceeds, 1.00));
+        portfolioList.add(new TransactionHistory(ticker, today(), "SELL", shares, price));
 
         System.out.println("Success stock sold.");
     }
