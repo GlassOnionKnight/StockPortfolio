@@ -87,7 +87,7 @@ public class PortfolioManager {
             return;
         }
         cashBalance -= totalCost;
-        portfolioList.add(mew TransactionHistory("CASH", today(), "WITHDRAW", -totalCost, 1.00));
+        portfolioList.add(new TransactionHistory("CASH", today(), "WITHDRAW", -totalCost, 1.00));
 
         stockHoldings.put(ticker, stockHoldings.getOrDefault(ticker, 0.0) + shares);
         portfolioList.add(new TransactionHistory(ticker, today(), "BUY", shares, price));
@@ -97,7 +97,7 @@ public class PortfolioManager {
     private void sellStock(Scanner sc) {
         System.out.println("Input ticker");
         String ticker = sc.next().toUpperCase();
-        double shares = getDoubleinput(sc, "Amount to sell: ");
+        double shares = getDoubleInput(sc, "Amount to sell: ");
         double price = getDoubleInput(sc, "Share Price");
 
         double ownedShares = stockHoldings.getOrDefault(ticker, 0.0);
