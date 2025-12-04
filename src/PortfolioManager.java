@@ -1,4 +1,5 @@
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
@@ -125,7 +126,7 @@ public class PortfolioManager {
 
     private void displayPortfolio() {
         System.out.println("Summary of portfolio.");
-        System.out.printf("Balance: $%.2f/n", cashBalance);
+        System.out.printf("Balance: $%.2f\n", cashBalance);
 
         if(stockHoldings.isEmpty()) {
             System.out.println("No holdings");
@@ -141,7 +142,7 @@ public class PortfolioManager {
 
     }
     private String today() {
-        return localDate.now().toString();
+        return LocalDate.now().toString();
     }
 
     private int getIntInput(Scanner sc, String prompt) {
