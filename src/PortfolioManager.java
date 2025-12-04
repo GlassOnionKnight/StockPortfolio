@@ -77,7 +77,7 @@ public class PortfolioManager {
 
     }
     private void buyStock(Scanner sc) {
-        System.out.print("Input Stock Ticker");
+        System.out.print("Input Stock Ticker: ");
         String ticker = sc.next().toUpperCase();
         double shares = getDoubleInput(sc, "Input amount of shares");
         double price = getDoubleInput(sc, "Share Price");
