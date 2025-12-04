@@ -13,7 +13,7 @@ public class TransactionHistory {
     private double costBasis;
 
 
-    public TransactionHistory(String cash, String today, String deposit, double amount, double v) {
+    public TransactionHistory() {
 
         this.ticker = "";
         this.transDate = "";
