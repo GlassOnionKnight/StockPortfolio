@@ -131,6 +131,10 @@ public class PortfolioManager {
     }
 
     private void displayPortfolio() {
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+
         System.out.println("Portfolio as of: " + LocalDate.now() + " " + java.time.LocalTime.now());
         System.out.println("====================================");
         System.out.println("Ticker   Quantity");
