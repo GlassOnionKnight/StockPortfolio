@@ -1,4 +1,3 @@
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -11,10 +10,9 @@ public class PortfolioManager {
     private double cashBalance = 0.0;
     private Map<String, Double> stockHoldings = new HashMap<>();
 
-    public void main (String[] args) {
+    public static void main(String[] args) {
         PortfolioManager manager = new PortfolioManager();
         manager.run();
-
     }
 
     private void run() {
@@ -32,13 +30,11 @@ public class PortfolioManager {
                 case 5 -> displayTransactionHistory();
                 case 6 -> displayPortfolio();
                 default -> System.out.println("invalid, select again");
-
             }
-
-        } while (choice !=0);
+        } while (choice != 0);
         sc.close();
-
     }
+
     private void printMenu() {
         System.out.println(" Brokerage Account ");
         System.out.println("0 - Exit");
@@ -49,38 +45,38 @@ public class PortfolioManager {
         System.out.println("5 - Display Transaction History");
         System.out.println("6 - Display Portfolio");
     }
+
     private void depositCash(Scanner sc) {
-        double amount = getDoubleInput(sc, "Deposit amount");
+        double amount = getDoubleInput(sc, "Deposit amount: ");
         if (amount <= 0) {
             System.out.println("Needs to be positive");
             return;
         }
         cashBalance += amount;
-        portfolioList.add(new TransactionHistory(today(),"CASH", "DEPOSIT", amount, 1.00));
+        portfolioList.add(new TransactionHistory(today(), "CASH", "DEPOSIT", amount, 1.00));
         System.out.println("Cash deposited successfully.");
-
     }
 
-    private void withdrawCash(Scanner sc){
+    private void withdrawCash(Scanner sc) {
         double amount = getDoubleInput(sc, "Amount to withdraw: ");
         if (amount <= 0) {
             System.out.println("Needs positive input.");
             return;
         }
-    if (amount > cashBalance) {
-        System.out.println("Insufficient Funds");
-        return;
+        if (amount > cashBalance) {
+            System.out.println("Insufficient Funds");
+            return;
+        }
+        cashBalance -= amount;
+        portfolioList.add(new TransactionHistory(today(), "CASH", "WITHDRAW", amount, 1.00));
+        System.out.println("Successful withdrawal");
     }
-    cashBalance -= amount;
-    portfolioList.add(new TransactionHistory (today(),"CASH", "WITHDRAW", amount, 1.00));
-    System.out.println("Successful withdrawal");
 
-    }
     private void buyStock(Scanner sc) {
         System.out.print("Input Stock Ticker: ");
         String ticker = sc.next().toUpperCase();
-        double shares = getDoubleInput(sc, "Input amount of shares");
-        double price = getDoubleInput(sc, "Share Price");
+        double shares = getDoubleInput(sc, "Input amount of shares: ");
+        double price = getDoubleInput(sc, "Share Price: ");
         double totalCost = shares * price;
 
         if (totalCost > cashBalance) {
@@ -88,18 +84,19 @@ public class PortfolioManager {
             return;
         }
         cashBalance -= totalCost;
-        portfolioList.add(new TransactionHistory("CASH", today(), "WITHDRAW", -totalCost, 1.00));
+        portfolioList.add(new TransactionHistory(today(), "CASH", "WITHDRAW", -totalCost, 1.00));
 
         stockHoldings.put(ticker, stockHoldings.getOrDefault(ticker, 0.0) + shares);
-        portfolioList.add(new TransactionHistory(ticker, today(), "BUY", shares, price));
+        portfolioList.add(new TransactionHistory(today(), ticker, "BUY", shares, price));
 
         System.out.println("Success stock purchased.");
     }
+
     private void sellStock(Scanner sc) {
-        System.out.println("Input ticker");
+        System.out.println("Input ticker: ");
         String ticker = sc.next().toUpperCase();
         double shares = getDoubleInput(sc, "Amount to sell: ");
-        double price = getDoubleInput(sc, "Share Price");
+        double price = getDoubleInput(sc, "Share Price: ");
 
         double ownedShares = stockHoldings.getOrDefault(ticker, 0.0);
         if (shares > ownedShares) {
@@ -108,26 +105,26 @@ public class PortfolioManager {
         }
         double totalProceeds = shares * price;
         cashBalance += totalProceeds;
-        portfolioList.add(new TransactionHistory( today(),"CASH", "DEPOSIT", totalProceeds, 1.00));
-        portfolioList.add(new TransactionHistory(ticker, today(), "SELL", shares, price));
+        portfolioList.add(new TransactionHistory(today(), "CASH", "DEPOSIT", totalProceeds, 1.00));
+        portfolioList.add(new TransactionHistory(today(), ticker, "SELL", shares, price));
 
         System.out.println("Success stock sold.");
     }
-        private void displayTransactionHistory() {
+
+    private void displayTransactionHistory() {
         if (portfolioList.isEmpty()) {
             System.out.println("Empty transaction list");
             return;
         }
-            System.out.println("Date         Ticker   Quantity     Cost Basis    Trans Type");
-            System.out.println("==================================================================");
-            for (TransactionHistory th : portfolioList) {
-                System.out.println(th);
-            }
-
+        System.out.println("Date         Ticker   Quantity     Cost Basis    Trans Type");
+        System.out.println("==================================================================");
+        for (TransactionHistory th : portfolioList) {
+            System.out.println(th);
+        }
     }
 
     private void displayPortfolio() {
-        System.out.println("Portfolio as of: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+        System.out.println("Portfolio as of: " + LocalDate.now() + " " + java.time.LocalTime.now());
         System.out.println("====================================");
         System.out.println("Ticker   Quantity");
         System.out.println("=================");
@@ -135,7 +132,7 @@ public class PortfolioManager {
         // Holding Cash
         System.out.printf("%-8s %.2f\n", "CASH", cashBalance);
 
-        //  stocks display
+        // Stocks display
         for (Map.Entry<String, Double> entry : stockHoldings.entrySet()) {
             if (entry.getValue() > 0) {
                 System.out.printf("%-8s %.2f\n", entry.getKey(), entry.getValue());
@@ -143,7 +140,6 @@ public class PortfolioManager {
         }
     }
 
-    }
     private String today() {
         return LocalDate.now().toString();
     }
@@ -158,9 +154,9 @@ public class PortfolioManager {
                 sc.nextLine();
             }
         }
-
     }
-    private double getDoubleInput(Scanner sc, String prompt){
+
+    private double getDoubleInput(Scanner sc, String prompt) {
         while (true) {
             try {
                 System.out.print(prompt);
@@ -171,5 +167,4 @@ public class PortfolioManager {
             }
         }
     }
-
 }
