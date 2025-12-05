@@ -6,7 +6,7 @@ import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
 
-public class PortfolioManager {
+public static class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();
     private double cashBalance = 0.0;
     private Map<String, Double> stockHoldings = new HashMap<>();
