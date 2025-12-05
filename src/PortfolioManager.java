@@ -4,6 +4,9 @@ import java.util.InputMismatchException;
 import java.util.Scanner;
 import java.util.HashMap;
 import java.util.Map;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+
 
 public class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();
@@ -131,7 +134,11 @@ public class PortfolioManager {
     }
 
     private void displayPortfolio() {
-        System.out.println("Portfolio as of: " + LocalDate.now() + " " + java.time.LocalTime.now());
+        LocalDate date = LocalDate.now();
+        LocalTime time = LocalTime.now();
+        DateTimeFormatter timeFormat = DateTimeFormatter.ofPattern("HH:mm:ss");
+
+        System.out.println("Portfolio as of: " + date + " " + time.format(timeFormat));
         System.out.println("====================================");
         System.out.println("Ticker   Quantity");
         System.out.println("=================");
@@ -146,6 +153,7 @@ public class PortfolioManager {
             }
         }
     }
+
 
     private String today() {
         return LocalDate.now().toString();
