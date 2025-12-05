@@ -118,10 +118,11 @@ public class PortfolioManager {
             System.out.println("Empty transaction list");
             return;
         }
-        System.out.println("Past Transactions");
-        for (TransactionHistory th : portfolioList){
-            System.out.println(th);
-        }
+            System.out.println("Date         Ticker   Quantity     Cost Basis    Trans Type");
+            System.out.println("==================================================================");
+            for (TransactionHistory th : portfolioList) {
+                System.out.println(th);
+            }
 
     }
 
