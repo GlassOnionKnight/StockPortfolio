@@ -4,7 +4,7 @@
  */
 
 import java.text.DecimalFormat;
-
+// for each transaction in PortfolioManager
 public class TransactionHistory {
     private String ticker;
     private String transDate;
@@ -12,7 +12,7 @@ public class TransactionHistory {
     private double qty;
     private double costBasis;
 
-
+//initial default constructor
     public TransactionHistory() {
 
         this.ticker = "";
@@ -21,7 +21,7 @@ public class TransactionHistory {
         this.qty = 0.0;
         this.costBasis = 0.0;
     }
-
+//constructor for transactions in PortfolioManager
     public <transDate> TransactionHistory(String transDate,String ticker, String transType, double qty, double costBasis){
         this.ticker = ticker;
         this.transDate =  transDate;
@@ -29,7 +29,7 @@ public class TransactionHistory {
         this.qty = qty;
         this.costBasis = costBasis;
     }
-
+// all get/set
     public String getTicker() { return ticker; }
     public void setTicker(String ticker){this.ticker = ticker;}
 
@@ -44,7 +44,7 @@ public class TransactionHistory {
 
     public double getCostBasis( ) {return costBasis;}
     public void setCostBasis(double costBasis) {this.costBasis = costBasis;}
-
+//display format for transactions in PortfolioManager
     @Override
     public String toString() {
         DecimalFormat df = new DecimalFormat("#,##0.0");
