@@ -46,12 +46,16 @@ public class TransactionHistory {
     public void setCostBasis(double costBasis) {this.costBasis = costBasis;}
 
     @Override
-    public String toString( ) {
+    public String toString() {
         DecimalFormat df = new DecimalFormat("#,##0.0");
         DecimalFormat money = new DecimalFormat("$#,##0.0");
 
-        return String.format("%-6s | %-10s | %-8s | Qty: %-8s | Cost Basis: $%-8s",
-                ticker, transDate, transType, df.format(qty), money.format(costBasis));
-
+        return String.format("%-12s %-8s %-12s %-12s %-12s",
+                transDate,
+                ticker,
+                df.format(qty),
+                money.format(costBasis),
+                transType);
     }
+
 }
