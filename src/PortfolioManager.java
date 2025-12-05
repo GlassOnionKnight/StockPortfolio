@@ -93,23 +93,30 @@ public class PortfolioManager {
     }
 
     private void sellStock(Scanner sc) {
-        System.out.println("Input ticker: ");
+        System.out.println("Input ticker");
         String ticker = sc.next().toUpperCase();
         double shares = getDoubleInput(sc, "Amount to sell: ");
-        double price = getDoubleInput(sc, "Share Price: ");
+        double price = getDoubleInput(sc, "Share Price");
 
         double ownedShares = stockHoldings.getOrDefault(ticker, 0.0);
         if (shares > ownedShares) {
             System.out.println("Not enough shares");
             return;
         }
+
         double totalProceeds = shares * price;
         cashBalance += totalProceeds;
+
+        //  Update holdings subtract shares
+        stockHoldings.put(ticker, ownedShares - shares);
+
+        // Record
         portfolioList.add(new TransactionHistory(today(), "CASH", "DEPOSIT", totalProceeds, 1.00));
         portfolioList.add(new TransactionHistory(today(), ticker, "SELL", shares, price));
 
         System.out.println("Success stock sold.");
     }
+
 
     private void displayTransactionHistory() {
         if (portfolioList.isEmpty()) {
