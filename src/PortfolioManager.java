@@ -1,3 +1,6 @@
+
+
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -7,17 +10,20 @@ import java.util.Map;
 import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 
+//all transactions list
 
 public class PortfolioManager {
     private ArrayList<TransactionHistory> portfolioList = new ArrayList<>();
     private double cashBalance = 0.0;
     private Map<String, Double> stockHoldings = new HashMap<>();
+//cash in account, map for stock tickers and shares
 
+    //menu loop and portfoliomanager creation
     public static void main(String[] args) {
         PortfolioManager manager = new PortfolioManager();
         manager.run();
     }
-
+//user input menu, display and loop for actions
     private void run() {
         Scanner sc = new Scanner(System.in);
         int choice;
@@ -37,7 +43,7 @@ public class PortfolioManager {
         } while (choice != 0);
         sc.close();
     }
-
+//prints menu
     private void printMenu() {
         System.out.println(" Brokerage Account ");
         System.out.println("0 - Exit");
@@ -48,7 +54,7 @@ public class PortfolioManager {
         System.out.println("5 - Display Transaction History");
         System.out.println("6 - Display Portfolio");
     }
-
+//deposits cash, records, correct or incorrect input messages
     private void depositCash(Scanner sc) {
         double amount = getDoubleInput(sc, "Deposit amount: ");
         if (amount <= 0) {
@@ -59,7 +65,7 @@ public class PortfolioManager {
         portfolioList.add(new TransactionHistory(today(), "CASH", "DEPOSIT", amount, 1.00));
         System.out.println("Cash deposited successfully.");
     }
-
+// incorrect or correct input messages, takes away from cash in account, records
     private void withdrawCash(Scanner sc) {
         double amount = getDoubleInput(sc, "Amount to withdraw: ");
         if (amount <= 0) {
@@ -74,7 +80,7 @@ public class PortfolioManager {
         portfolioList.add(new TransactionHistory(today(), "CASH", "WITHDRAW", amount, 1.00));
         System.out.println("Successful withdrawal");
     }
-
+// increase share holding, minus cashbalance, records
     private void buyStock(Scanner sc) {
         System.out.print("Input Stock Ticker: ");
         String ticker = sc.next().toUpperCase();
@@ -94,7 +100,7 @@ public class PortfolioManager {
 
         System.out.println("Success stock purchased.");
     }
-
+// minus stock holdings, detects if holdings exist, adds to cashbalance, records
     private void sellStock(Scanner sc) {
         System.out.println("Input ticker");
         String ticker = sc.next().toUpperCase();
@@ -120,7 +126,7 @@ public class PortfolioManager {
         System.out.println("Success stock sold.");
     }
 
-
+// format for transactionhistory display
     private void displayTransactionHistory() {
         if (portfolioList.isEmpty()) {
             System.out.println("Empty transaction list");
@@ -132,7 +138,7 @@ public class PortfolioManager {
             System.out.println(th);
         }
     }
-
+// uses users date and time, displays portfolio as formatted
     private void displayPortfolio() {
         LocalDate date = LocalDate.now();
         LocalTime time = LocalTime.now();
