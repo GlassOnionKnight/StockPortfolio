@@ -127,20 +127,21 @@ public class PortfolioManager {
     }
 
     private void displayPortfolio() {
-        System.out.println("Summary of portfolio as of: " + LocalDate.now());
-        System.out.printf("Balance: $%.2f\n", cashBalance);
+        System.out.println("Portfolio as of: " + java.time.LocalDate.now() + " " + java.time.LocalTime.now());
+        System.out.println("====================================");
+        System.out.println("Ticker   Quantity");
+        System.out.println("=================");
 
-        if(stockHoldings.isEmpty()) {
-            System.out.println("No holdings");
-        } else {
-            System.out.println("Current holdings:");
-            for (Map.Entry<String, Double> entry : stockHoldings.entrySet()) {
-                if (entry.getValue() > 0) {
-                    System.out.printf("%-8s Shares: %.2f\n", entry.getKey(), entry.getValue());
-                }
+        // Holding Cash
+        System.out.printf("%-8s %.2f\n", "CASH", cashBalance);
+
+        //  stocks display
+        for (Map.Entry<String, Double> entry : stockHoldings.entrySet()) {
+            if (entry.getValue() > 0) {
+                System.out.printf("%-8s %.2f\n", entry.getKey(), entry.getValue());
             }
-
         }
+    }
 
     }
     private String today() {
