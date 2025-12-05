@@ -126,7 +126,7 @@ public class PortfolioManager {
     }
 
     private void displayPortfolio() {
-        System.out.println("Summary of portfolio.");
+        System.out.println("Summary of portfolio as of: " + LocalDate.now());
         System.out.printf("Balance: $%.2f\n", cashBalance);
 
         if(stockHoldings.isEmpty()) {
